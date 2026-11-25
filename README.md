@@ -48,4 +48,4 @@ O TripScripter gera roteiros de viagem personalizados com apoio de inteligência
 | Requisitos | [docs/requisitos.md](docs/requisitos.md) |
 | Arquitetura | [docs/arquitetura.md](docs/arquitetura.md) |
 | Decisões (ADRs) | [docs/decisoes/README.md](docs/decisoes/README.md) |
-| Reuniões | [docs/reunioes/README.md](docs/reunioes/README.md) |
+| Reuniões | [docs/reunioes/README.md](docs/reunioes/README.md) |# tripscripter
