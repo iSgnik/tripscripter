@@ -1,0 +1,709 @@
+[
+{
+ "model": "persistencia.usuario",
+ "pk": 1,
+ "fields": {
+  "nome": "Marina Alves",
+  "email": "marina@email.com",
+  "senha_hash": "pbkdf2_sha256$1500000$CULjyh7w579GcgVsRCcu77$heJxe0+V9eFMkS2IFf7wN98pI1mLI0MYcsLhhuJMi0Y=",
+  "data_cadastro": "2026-01-15T09:20:00"
+ }
+},
+{
+ "model": "persistencia.usuario",
+ "pk": 2,
+ "fields": {
+  "nome": "Rafael Nogueira",
+  "email": "rafael@email.com",
+  "senha_hash": "pbkdf2_sha256$1500000$PLzIyXQFZHpGlS4ovGJq2u$NI9YG3L3REGKiKQDENj216XfoUcVVLpiKOT3v5YdChU=",
+  "data_cadastro": "2026-02-03T14:45:00"
+ }
+},
+{
+ "model": "persistencia.preferencia",
+ "pk": 1,
+ "fields": {
+  "usuario": 1,
+  "categoria": "Cultura",
+  "nivel_interesse": 5
+ }
+},
+{
+ "model": "persistencia.preferencia",
+ "pk": 2,
+ "fields": {
+  "usuario": 1,
+  "categoria": "Gastronomia",
+  "nivel_interesse": 5
+ }
+},
+{
+ "model": "persistencia.preferencia",
+ "pk": 3,
+ "fields": {
+  "usuario": 1,
+  "categoria": "Arte",
+  "nivel_interesse": 4
+ }
+},
+{
+ "model": "persistencia.preferencia",
+ "pk": 4,
+ "fields": {
+  "usuario": 1,
+  "categoria": "Natureza",
+  "nivel_interesse": 2
+ }
+},
+{
+ "model": "persistencia.preferencia",
+ "pk": 5,
+ "fields": {
+  "usuario": 2,
+  "categoria": "Natureza",
+  "nivel_interesse": 5
+ }
+},
+{
+ "model": "persistencia.preferencia",
+ "pk": 6,
+ "fields": {
+  "usuario": 2,
+  "categoria": "Cultura",
+  "nivel_interesse": 3
+ }
+},
+{
+ "model": "persistencia.preferencia",
+ "pk": 7,
+ "fields": {
+  "usuario": 2,
+  "categoria": "Vida noturna",
+  "nivel_interesse": 1
+ }
+},
+{
+ "model": "persistencia.viagem",
+ "pk": 1,
+ "fields": {
+  "usuario": 1,
+  "destino": "Paris, França",
+  "data_inicio": "2027-05-15",
+  "data_fim": "2027-05-17",
+  "estilo_viagem": "Equilibrado"
+ }
+},
+{
+ "model": "persistencia.viagem",
+ "pk": 2,
+ "fields": {
+  "usuario": 2,
+  "destino": "Tóquio, Japão",
+  "data_inicio": "2027-06-10",
+  "data_fim": "2027-06-12",
+  "estilo_viagem": "Intenso"
+ }
+},
+{
+ "model": "persistencia.viagem",
+ "pk": 3,
+ "fields": {
+  "usuario": 1,
+  "destino": "Lisboa, Portugal",
+  "data_inicio": "2026-04-10",
+  "data_fim": "2026-04-11",
+  "estilo_viagem": "Tranquilo"
+ }
+},
+{
+ "model": "persistencia.diaroteiro",
+ "pk": 1,
+ "fields": {
+  "viagem": 1,
+  "data": "2027-05-15",
+  "ordem": 1
+ }
+},
+{
+ "model": "persistencia.diaroteiro",
+ "pk": 2,
+ "fields": {
+  "viagem": 1,
+  "data": "2027-05-16",
+  "ordem": 2
+ }
+},
+{
+ "model": "persistencia.diaroteiro",
+ "pk": 3,
+ "fields": {
+  "viagem": 1,
+  "data": "2027-05-17",
+  "ordem": 3
+ }
+},
+{
+ "model": "persistencia.diaroteiro",
+ "pk": 4,
+ "fields": {
+  "viagem": 2,
+  "data": "2027-06-10",
+  "ordem": 1
+ }
+},
+{
+ "model": "persistencia.diaroteiro",
+ "pk": 5,
+ "fields": {
+  "viagem": 2,
+  "data": "2027-06-11",
+  "ordem": 2
+ }
+},
+{
+ "model": "persistencia.diaroteiro",
+ "pk": 6,
+ "fields": {
+  "viagem": 2,
+  "data": "2027-06-12",
+  "ordem": 3
+ }
+},
+{
+ "model": "persistencia.diaroteiro",
+ "pk": 7,
+ "fields": {
+  "viagem": 3,
+  "data": "2026-04-10",
+  "ordem": 1
+ }
+},
+{
+ "model": "persistencia.diaroteiro",
+ "pk": 8,
+ "fields": {
+  "viagem": 3,
+  "data": "2026-04-11",
+  "ordem": 2
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 1,
+ "fields": {
+  "nome": "Musée de l'Orangerie",
+  "endereco": "Jardin des Tuileries, 75001 Paris",
+  "latitude": "48.863800",
+  "longitude": "2.322600",
+  "horario_funcionamento": "Quarta a segunda, 9h às 18h",
+  "categoria": "Arte"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 2,
+ "fields": {
+  "nome": "Marché des Enfants Rouges",
+  "endereco": "39 Rue de Bretagne, 75003 Paris",
+  "latitude": "48.863000",
+  "longitude": "2.362500",
+  "horario_funcionamento": "Terça a domingo, 8h30 às 19h30",
+  "categoria": "Gastronomia"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 3,
+ "fields": {
+  "nome": "Jardim de Luxemburgo",
+  "endereco": "75006 Paris",
+  "latitude": "48.846200",
+  "longitude": "2.337200",
+  "horario_funcionamento": "Diariamente, do amanhecer ao pôr do sol",
+  "categoria": "Natureza"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 4,
+ "fields": {
+  "nome": "Bistrot Paul Bert",
+  "endereco": "18 Rue Paul Bert, 75011 Paris",
+  "latitude": "48.852700",
+  "longitude": "2.383500",
+  "horario_funcionamento": "Terça a sábado, 12h às 14h e 19h30 às 23h",
+  "categoria": "Gastronomia"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 5,
+ "fields": {
+  "nome": "Montmartre",
+  "endereco": "75018 Paris",
+  "latitude": "48.884600",
+  "longitude": "2.338000",
+  "horario_funcionamento": "Acesso livre",
+  "categoria": "Cultura"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 6,
+ "fields": {
+  "nome": "Basílica de Sacré-Cœur",
+  "endereco": "35 Rue du Chevalier de la Barre, 75018",
+  "latitude": "48.886700",
+  "longitude": "2.343100",
+  "horario_funcionamento": "Diariamente, 6h30 às 22h30",
+  "categoria": "Cultura"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 7,
+ "fields": {
+  "nome": "Canal Saint-Martin",
+  "endereco": "75010 Paris",
+  "latitude": "48.870900",
+  "longitude": "2.365800",
+  "horario_funcionamento": "Acesso livre",
+  "categoria": "Natureza"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 8,
+ "fields": {
+  "nome": "Museu do Louvre",
+  "endereco": "Rue de Rivoli, 75001 Paris",
+  "latitude": "48.860600",
+  "longitude": "2.337600",
+  "horario_funcionamento": "Quarta a segunda, 9h às 18h",
+  "categoria": "Arte"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 9,
+ "fields": {
+  "nome": "Livraria Shakespeare and Company",
+  "endereco": "37 Rue de la Bûcherie, 75005 Paris",
+  "latitude": "48.852600",
+  "longitude": "2.347100",
+  "horario_funcionamento": "Diariamente, 10h às 22h",
+  "categoria": "Cultura"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 10,
+ "fields": {
+  "nome": "Templo Sensō-ji",
+  "endereco": "2-3-1 Asakusa, Taito, Tóquio",
+  "latitude": "35.714800",
+  "longitude": "139.796700",
+  "horario_funcionamento": "Diariamente, 6h às 17h",
+  "categoria": "Cultura"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 11,
+ "fields": {
+  "nome": "Rua Nakamise",
+  "endereco": "1-36-3 Asakusa, Taito, Tóquio",
+  "latitude": "35.711800",
+  "longitude": "139.796600",
+  "horario_funcionamento": "Diariamente, 9h às 19h",
+  "categoria": "Gastronomia"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 12,
+ "fields": {
+  "nome": "Jardim Nacional Shinjuku Gyoen",
+  "endereco": "11 Naitomachi, Shinjuku, Tóquio",
+  "latitude": "35.685200",
+  "longitude": "139.710000",
+  "horario_funcionamento": "Terça a domingo, 9h às 16h30",
+  "categoria": "Natureza"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 13,
+ "fields": {
+  "nome": "Omoide Yokocho",
+  "endereco": "1-2 Nishishinjuku, Shinjuku, Tóquio",
+  "latitude": "35.693800",
+  "longitude": "139.699600",
+  "horario_funcionamento": "Diariamente, 17h às 23h",
+  "categoria": "Vida noturna"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 14,
+ "fields": {
+  "nome": "Museu Nacional de Tóquio",
+  "endereco": "13-9 Uenokoen, Taito, Tóquio",
+  "latitude": "35.718800",
+  "longitude": "139.776600",
+  "horario_funcionamento": "Terça a domingo, 9h30 às 17h",
+  "categoria": "Arte"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 15,
+ "fields": {
+  "nome": "Parque Ueno",
+  "endereco": "Uenokoen, Taito, Tóquio",
+  "latitude": "35.715600",
+  "longitude": "139.774500",
+  "horario_funcionamento": "Diariamente, 5h às 23h",
+  "categoria": "Natureza"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 16,
+ "fields": {
+  "nome": "Bairro de Yanaka",
+  "endereco": "Yanaka, Taito, Tóquio",
+  "latitude": "35.727600",
+  "longitude": "139.766100",
+  "horario_funcionamento": "Acesso livre",
+  "categoria": "Cultura"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 17,
+ "fields": {
+  "nome": "Monte Takao",
+  "endereco": "Takaomachi, Hachioji, Tóquio",
+  "latitude": "35.625300",
+  "longitude": "139.243600",
+  "horario_funcionamento": "Acesso livre; teleférico das 8h às 17h45",
+  "categoria": "Natureza"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 18,
+ "fields": {
+  "nome": "Mirante de Shibuya",
+  "endereco": "2-24-12 Shibuya, Tóquio",
+  "latitude": "35.658000",
+  "longitude": "139.701600",
+  "horario_funcionamento": "Diariamente, 10h às 22h30",
+  "categoria": "Vida noturna"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 19,
+ "fields": {
+  "nome": "Mosteiro dos Jerónimos",
+  "endereco": "Praça do Império, 1400-206 Lisboa",
+  "latitude": "38.697700",
+  "longitude": "-9.206500",
+  "horario_funcionamento": "Terça a domingo, 10h às 17h30",
+  "categoria": "Cultura"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 20,
+ "fields": {
+  "nome": "Time Out Market",
+  "endereco": "Av. 24 de Julho 49, 1200-479 Lisboa",
+  "latitude": "38.707200",
+  "longitude": "-9.145800",
+  "horario_funcionamento": "Diariamente, 10h às 24h",
+  "categoria": "Gastronomia"
+ }
+},
+{
+ "model": "persistencia.local",
+ "pk": 21,
+ "fields": {
+  "nome": "Castelo de São Jorge",
+  "endereco": "R. de Santa Cruz, 1100-129 Lisboa",
+  "latitude": "38.713900",
+  "longitude": "-9.133400",
+  "horario_funcionamento": "Diariamente, 9h às 21h",
+  "categoria": "Cultura"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 1,
+ "fields": {
+  "dia": 1,
+  "local": 1,
+  "hora_sugerida": "09:00:00",
+  "ordem_do_dia": 1,
+  "custo_estimado": "12.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 2,
+ "fields": {
+  "dia": 1,
+  "local": 2,
+  "hora_sugerida": "12:30:00",
+  "ordem_do_dia": 2,
+  "custo_estimado": "18.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 3,
+ "fields": {
+  "dia": 1,
+  "local": 3,
+  "hora_sugerida": "15:00:00",
+  "ordem_do_dia": 3,
+  "custo_estimado": "0.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 4,
+ "fields": {
+  "dia": 1,
+  "local": 4,
+  "hora_sugerida": "19:30:00",
+  "ordem_do_dia": 4,
+  "custo_estimado": "45.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 5,
+ "fields": {
+  "dia": 2,
+  "local": 5,
+  "hora_sugerida": "08:30:00",
+  "ordem_do_dia": 1,
+  "custo_estimado": "0.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 6,
+ "fields": {
+  "dia": 2,
+  "local": 6,
+  "hora_sugerida": "11:00:00",
+  "ordem_do_dia": 2,
+  "custo_estimado": "0.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 7,
+ "fields": {
+  "dia": 2,
+  "local": 7,
+  "hora_sugerida": "14:00:00",
+  "ordem_do_dia": 3,
+  "custo_estimado": "0.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 8,
+ "fields": {
+  "dia": 3,
+  "local": 8,
+  "hora_sugerida": "10:00:00",
+  "ordem_do_dia": 1,
+  "custo_estimado": "22.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 9,
+ "fields": {
+  "dia": 3,
+  "local": 9,
+  "hora_sugerida": "16:00:00",
+  "ordem_do_dia": 2,
+  "custo_estimado": "0.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 10,
+ "fields": {
+  "dia": 4,
+  "local": 10,
+  "hora_sugerida": "08:00:00",
+  "ordem_do_dia": 1,
+  "custo_estimado": "0.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 11,
+ "fields": {
+  "dia": 4,
+  "local": 11,
+  "hora_sugerida": "11:00:00",
+  "ordem_do_dia": 2,
+  "custo_estimado": "0.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 12,
+ "fields": {
+  "dia": 4,
+  "local": 12,
+  "hora_sugerida": "14:30:00",
+  "ordem_do_dia": 3,
+  "custo_estimado": "500.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 13,
+ "fields": {
+  "dia": 4,
+  "local": 13,
+  "hora_sugerida": "19:00:00",
+  "ordem_do_dia": 4,
+  "custo_estimado": "3000.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 14,
+ "fields": {
+  "dia": 5,
+  "local": 14,
+  "hora_sugerida": "09:30:00",
+  "ordem_do_dia": 1,
+  "custo_estimado": "1000.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 15,
+ "fields": {
+  "dia": 5,
+  "local": 15,
+  "hora_sugerida": "13:00:00",
+  "ordem_do_dia": 2,
+  "custo_estimado": "0.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 16,
+ "fields": {
+  "dia": 5,
+  "local": 16,
+  "hora_sugerida": "16:00:00",
+  "ordem_do_dia": 3,
+  "custo_estimado": "0.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 17,
+ "fields": {
+  "dia": 6,
+  "local": 17,
+  "hora_sugerida": "07:30:00",
+  "ordem_do_dia": 1,
+  "custo_estimado": "1400.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 18,
+ "fields": {
+  "dia": 6,
+  "local": 18,
+  "hora_sugerida": "18:00:00",
+  "ordem_do_dia": 2,
+  "custo_estimado": "2500.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 19,
+ "fields": {
+  "dia": 7,
+  "local": 19,
+  "hora_sugerida": "10:00:00",
+  "ordem_do_dia": 1,
+  "custo_estimado": "10.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 20,
+ "fields": {
+  "dia": 7,
+  "local": 20,
+  "hora_sugerida": "13:00:00",
+  "ordem_do_dia": 2,
+  "custo_estimado": "25.00"
+ }
+},
+{
+ "model": "persistencia.atividaderoteiro",
+ "pk": 21,
+ "fields": {
+  "dia": 8,
+  "local": 21,
+  "hora_sugerida": "09:30:00",
+  "ordem_do_dia": 1,
+  "custo_estimado": "15.00"
+ }
+},
+{
+ "model": "persistencia.notapessoal",
+ "pk": 1,
+ "fields": {
+  "atividade": 2,
+  "texto": "Chegar antes das 13h para evitar fila.",
+  "criado_em": "2026-04-20T21:10:00"
+ }
+},
+{
+ "model": "persistencia.notapessoal",
+ "pk": 2,
+ "fields": {
+  "atividade": 8,
+  "texto": "Comprar o ingresso on-line na véspera.",
+  "criado_em": "2026-04-21T08:05:00"
+ }
+},
+{
+ "model": "persistencia.notapessoal",
+ "pk": 3,
+ "fields": {
+  "atividade": 9,
+  "texto": "Procurar a seção de poesia no segundo andar.",
+  "criado_em": "2026-04-21T08:12:00"
+ }
+},
+{
+ "model": "persistencia.notapessoal",
+ "pk": 4,
+ "fields": {
+  "atividade": 13,
+  "texto": "Levar água e calçado de trilha.",
+  "criado_em": "2026-05-02T19:30:00"
+ }
+}
+]

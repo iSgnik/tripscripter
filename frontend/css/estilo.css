@@ -1,0 +1,1656 @@
+/* =========================================================================
+   TripScripter — folha de estilos principal
+   Paleta derivada do protótipo de alta fidelidade (Figma), na versão sem
+   cor quente: a identidade de viagem vem das fotos de destino.
+   ========================================================================= */
+
+:root {
+  /* Cores */
+  --verde-profundo: #134e5a;
+  --verde: #0e7c70;
+  --verde-claro: #8fbdb5;
+  --verde-vidro: rgba(255, 255, 255, 0.12);
+  --casca: #eff3f1;
+  --casca-clara: #f8fafa;
+  /* --areia manteve o nome, mas deixou de ser um tom quente: renomeá-la
+     obrigaria a alterar dezenas de linhas sem ganho. */
+  --areia: #b8cfc9;
+  --tinta: #0f3b45;
+  --tinta-suave: #5f7276;
+  --linha: #d3deda;
+  --perigo: #a8443b;
+
+  /* Tipografia */
+  --display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --corpo: "Karla", "Segoe UI", system-ui, sans-serif;
+
+  /* Medidas */
+  --raio: 14px;
+  --raio-g: 22px;
+  --barra: 244px;
+  --sombra: 0 12px 28px rgba(15, 59, 69, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--corpo);
+  color: var(--tinta);
+  background: var(--casca);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+/* Acessibilidade: foco sempre visível. Usa --verde porque o tom de apoio
+   (--areia) é claro demais para servir de indicador de foco. */
+:focus-visible {
+  outline: 3px solid var(--verde);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* =========================================================================
+   1. TELA DE ACESSO (index.html)
+   ========================================================================= */
+
+.acesso {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+  background:
+    radial-gradient(120% 90% at 15% 0%, #1a6070 0%, transparent 60%),
+    var(--verde-profundo);
+}
+
+.acesso__cartao {
+  width: 100%;
+  max-width: 400px;
+  background: var(--casca-clara);
+  border-radius: var(--raio-g);
+  padding: 40px 36px 32px;
+  box-shadow: var(--sombra);
+}
+
+.acesso__marca {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 0 0 4px;
+}
+
+.acesso__linha-fina {
+  text-align: center;
+  font-size: 0.86rem;
+  color: var(--tinta-suave);
+  margin: 0 0 26px;
+}
+
+.acesso__avatar {
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 26px;
+  border-radius: 50%;
+  background: var(--areia);
+  display: grid;
+  place-items: center;
+}
+
+.acesso__avatar svg { width: 34px; height: 34px; color: var(--verde-profundo); }
+
+.campo { margin-bottom: 20px; }
+
+.campo__rotulo {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-bottom: 7px;
+}
+
+.campo__entrada {
+  width: 100%;
+  border: 0;
+  border-bottom: 1.5px solid var(--linha);
+  background: transparent;
+  font-family: var(--corpo);
+  font-size: 0.98rem;
+  color: var(--tinta);
+  padding: 7px 2px;
+  transition: border-color 0.18s ease;
+}
+
+.campo__entrada::placeholder { color: #93a3a6; }
+.campo__entrada:focus { outline: none; border-bottom-color: var(--verde); }
+
+.acesso__opcoes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  margin: 24px 0 22px;
+  color: var(--tinta-suave);
+}
+
+.acesso__lembrar { display: flex; align-items: center; gap: 8px; }
+.acesso__lembrar input { accent-color: var(--verde); }
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--corpo);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 0;
+  border-radius: 10px;
+  padding: 13px 22px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.18s ease, transform 0.12s ease;
+}
+
+.botao--cheio { width: 100%; }
+
+.botao--primario { background: var(--verde); color: #fff; }
+.botao--primario:hover { background: var(--verde-profundo); }
+.botao--primario:active { transform: translateY(1px); }
+
+.botao--claro {
+  background: var(--casca-clara);
+  color: var(--verde-profundo);
+  border: 1px solid var(--linha);
+}
+.botao--claro:hover { background: #fff; }
+
+.botao--fantasma {
+  background: transparent;
+  color: var(--tinta-suave);
+  border: 1px solid var(--linha);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 8px 14px;
+}
+.botao--fantasma:hover { border-color: var(--verde-claro); color: var(--verde-profundo); }
+
+.acesso__rodape {
+  text-align: center;
+  font-size: 0.86rem;
+  margin: 20px 0 0;
+  color: var(--tinta-suave);
+}
+
+.aviso {
+  display: none;
+  background: #f6e4e2;
+  color: var(--perigo);
+  border-radius: 9px;
+  font-size: 0.85rem;
+  padding: 10px 13px;
+  margin-bottom: 20px;
+}
+
+.aviso.esta-visivel { display: block; }
+
+/* =========================================================================
+   2. ESTRUTURA INTERNA (viagens.html e roteiro.html)
+   ========================================================================= */
+
+.painel {
+  display: grid;
+  grid-template-columns: var(--barra) 1fr;
+  min-height: 100vh;
+}
+
+.barra {
+  background: var(--verde-profundo);
+  color: var(--casca-clara);
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.barra__marca {
+  font-family: var(--display);
+  font-size: 1.22rem;
+  color: #fff;
+}
+
+.barra__perfil {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 0.86rem;
+}
+
+.barra__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--areia);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.barra__avatar svg { width: 19px; height: 19px; color: var(--verde-profundo); }
+
+.barra__nome { font-weight: 700; }
+.barra__papel { color: var(--verde-claro); font-size: 0.78rem; }
+
+.barra__menu { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
+
+.barra__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.82);
+  transition: background-color 0.16s ease;
+}
+
+.barra__item:hover { background: var(--verde-vidro); color: #fff; }
+.barra__item[aria-current="page"] { background: var(--verde); color: #fff; font-weight: 700; }
+.barra__item svg { width: 17px; height: 17px; flex-shrink: 0; }
+
+.barra__fim { margin-top: auto; font-size: 0.82rem; }
+.barra__fim a { color: var(--verde-claro); text-decoration: none; }
+.barra__fim a:hover { color: #fff; }
+
+.conteudo { padding: 38px 44px 60px; max-width: 1120px; }
+
+.cabecalho {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.cabecalho h1 { font-size: 2rem; }
+.cabecalho p { margin: 5px 0 0; color: var(--tinta-suave); font-size: 0.92rem; }
+
+/* =========================================================================
+   3. LISTA DE VIAGENS
+   ========================================================================= */
+
+.viagens {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+}
+
+.viagem {
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-g);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.viagem:hover { transform: translateY(-3px); box-shadow: var(--sombra); }
+
+.viagem__capa {
+  height: 128px;
+  background: linear-gradient(150deg, var(--verde) 0%, var(--verde-profundo) 100%);
+  display: grid;
+  place-items: center;
+}
+
+.viagem__capa svg { width: 40px; height: 40px; color: rgba(255, 255, 255, 0.9); }
+
+.viagem__corpo { padding: 17px 19px 20px; display: grid; gap: 7px; }
+.viagem__destino { font-family: var(--display); font-size: 1.12rem; }
+
+.viagem__dado {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.84rem;
+  color: var(--tinta-suave);
+}
+
+.viagem__dado svg { width: 14px; height: 14px; }
+
+.etiqueta {
+  justify-self: start;
+  align-self: start;
+  margin-top: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: var(--areia);
+  color: var(--verde-profundo);
+}
+
+.etiqueta--planejando { background: #dbe7e4; color: var(--verde-profundo); }
+
+/* =========================================================================
+   4. ROTEIRO — linha do tempo do dia (elemento central da tela)
+   ========================================================================= */
+
+.dias {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--linha);
+  padding-bottom: 14px;
+  margin-bottom: 30px;
+}
+
+.dia-aba {
+  font-family: var(--corpo);
+  font-size: 0.86rem;
+  font-weight: 700;
+  background: transparent;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  padding: 8px 17px;
+  cursor: pointer;
+  color: var(--tinta-suave);
+  transition: all 0.16s ease;
+}
+
+.dia-aba:hover { border-color: var(--verde-claro); color: var(--verde-profundo); }
+.dia-aba[aria-selected="true"] { background: var(--verde-profundo); border-color: var(--verde-profundo); color: #fff; }
+
+.trilha { position: relative; padding-left: 84px; }
+
+.trilha::before {
+  content: "";
+  position: absolute;
+  left: 63px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: var(--linha);
+}
+
+.parada { position: relative; margin-bottom: 20px; }
+
+.parada__hora {
+  position: absolute;
+  left: -84px;
+  top: 16px;
+  width: 52px;
+  text-align: right;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--verde-profundo);
+  font-variant-numeric: tabular-nums;
+}
+
+.parada::before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 22px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--casca);
+  border: 2.5px solid var(--verde);
+}
+
+.parada__cartao {
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 16px 18px;
+}
+
+.parada__topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.parada__nome { font-family: var(--display); font-size: 1.04rem; }
+
+.parada__meta {
+  font-size: 0.8rem;
+  color: var(--tinta-suave);
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.parada__acoes { display: flex; gap: 8px; margin-top: 13px; flex-wrap: wrap; }
+
+.parada__nota {
+  margin-top: 12px;
+  border-left: 3px solid var(--areia);
+  background: #f1f6f5;
+  padding: 9px 12px;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.86rem;
+  color: var(--tinta-suave);
+}
+
+.parada__nota strong {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-bottom: 3px;
+}
+
+/* Formulário de inclusão manual de local */
+.inclusao {
+  margin-top: 6px;
+  background: var(--casca-clara);
+  border: 1px dashed var(--verde-claro);
+  border-radius: var(--raio);
+  padding: 18px;
+}
+
+.inclusao__grade {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 2fr 1fr auto;
+  align-items: end;
+}
+
+.vazio {
+  border: 1px dashed var(--linha);
+  border-radius: var(--raio);
+  padding: 30px;
+  text-align: center;
+  color: var(--tinta-suave);
+  font-size: 0.9rem;
+}
+
+/* =========================================================================
+   5. RESPONSIVO
+   ========================================================================= */
+
+@media (max-width: 860px) {
+  .painel { grid-template-columns: 1fr; }
+
+  .barra {
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 18px;
+    flex-wrap: wrap;
+  }
+
+  .barra__menu { display: flex; gap: 6px; }
+  .barra__fim { margin-top: 0; margin-left: auto; }
+  .barra__perfil { order: 3; }
+
+  .conteudo { padding: 26px 20px 48px; }
+  .cabecalho h1 { font-size: 1.6rem; }
+
+  .trilha { padding-left: 56px; }
+  .trilha::before { left: 39px; }
+  .parada__hora { left: -56px; width: 34px; font-size: 0.76rem; }
+  .parada::before { left: -22px; }
+
+  .inclusao__grade { grid-template-columns: 1fr; }
+}
+
+/* =========================================================================
+   6. ASSISTENTE DE NOVA VIAGEM (nova-viagem.html)
+   Fluxo em três passos: informações básicas, preferências e revisão.
+   Reaproveita .campo, .botao, .etiqueta e a paleta já definidos acima.
+   ========================================================================= */
+
+.assistente { max-width: 720px; }
+
+/* --- barra de progresso ------------------------------------------------- */
+
+.progresso { margin-bottom: 34px; }
+
+.progresso__trilho {
+  height: 6px;
+  background: var(--linha);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progresso__preenchido {
+  height: 100%;
+  width: 33%;
+  background: var(--verde);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.progresso__texto {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--tinta-suave);
+  margin-top: 9px;
+}
+
+.progresso__passo { font-weight: 700; color: var(--verde-profundo); }
+
+/* --- passos -------------------------------------------------------------- */
+
+.passo { display: none; }
+.passo[data-ativo="true"] { display: block; }
+
+.passo__titulo { font-size: 1.5rem; margin-bottom: 6px; }
+
+.passo__ajuda {
+  color: var(--tinta-suave);
+  font-size: 0.92rem;
+  margin: 0 0 26px;
+  max-width: 52ch;
+}
+
+.passo__dupla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.passo__navegacao {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid var(--linha);
+}
+
+.passo__navegacao .botao--fantasma { margin-right: auto; }
+
+/* --- campos com moldura (o assistente pede mais destaque que o login) ---- */
+
+.campo__caixa {
+  width: 100%;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background: var(--casca-clara);
+  font-family: var(--corpo);
+  font-size: 0.98rem;
+  color: var(--tinta);
+  padding: 12px 14px;
+  transition: border-color 0.18s ease;
+}
+
+.campo__caixa:hover { border-color: var(--verde-claro); }
+.campo__caixa:focus { outline: none; border-color: var(--verde); }
+
+.campo__erro {
+  display: none;
+  color: var(--perigo);
+  font-size: 0.84rem;
+  margin: 7px 0 0;
+}
+
+.campo__erro.esta-visivel { display: block; }
+
+.campo--invalido .campo__caixa { border-color: var(--perigo); }
+
+.duracao {
+  font-size: 0.88rem;
+  color: var(--verde-profundo);
+  font-weight: 700;
+  margin: 12px 0 0;
+  min-height: 1.4em;
+}
+
+/* --- preferências como etiquetas clicáveis ------------------------------- */
+
+.interesses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.interesse input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.interesse span {
+  display: inline-block;
+  padding: 9px 17px;
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--tinta-suave);
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.interesse span:hover { border-color: var(--verde-claro); color: var(--verde-profundo); }
+
+.interesse input:checked + span {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+  font-weight: 700;
+}
+
+.interesse input:focus-visible + span {
+  outline: 3px solid var(--verde);
+  outline-offset: 3px;
+}
+
+/* --- revisão ------------------------------------------------------------- */
+
+.revisao {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-g);
+  overflow: hidden;
+}
+
+.revisao li {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--linha);
+  font-size: 0.94rem;
+}
+
+.revisao li:last-child { border-bottom: 0; }
+
+.revisao dt, .revisao__rotulo {
+  color: var(--tinta-suave);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.revisao__valor { text-align: right; font-weight: 600; }
+
+/* --- geração simulada ---------------------------------------------------- */
+
+.geracao { display: none; }
+.geracao[data-ativo="true"] { display: block; }
+
+.geracao__cartao {
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-g);
+  padding: 30px;
+}
+
+.geracao__etapas { list-style: none; margin: 22px 0 0; padding: 0; }
+
+.geracao__etapas li {
+  position: relative;
+  padding: 9px 0 9px 32px;
+  color: var(--tinta-suave);
+  font-size: 0.94rem;
+  transition: color 0.25s ease;
+}
+
+.geracao__etapas li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 15px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--linha);
+  transition: background-color 0.25s ease;
+}
+
+.geracao__etapas li[data-feito="true"] { color: var(--tinta); font-weight: 600; }
+.geracao__etapas li[data-feito="true"]::before { background: var(--verde); }
+
+.geracao__acoes { display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+
+/* --- responsivo ---------------------------------------------------------- */
+
+@media (max-width: 860px) {
+  .passo__dupla { grid-template-columns: 1fr; }
+
+  .passo__navegacao {
+    flex-direction: column-reverse;
+  }
+
+  .passo__navegacao .botao { width: 100%; }
+  .passo__navegacao .botao--fantasma { margin-right: 0; }
+
+  .revisao li { flex-direction: column; gap: 5px; }
+  .revisao__valor { text-align: left; }
+}
+
+/* =========================================================================
+   7. CADASTRO (cadastro.html) — RQ001
+   Reaproveita o cartão da tela de acesso, com campos extras,
+   indicador de força da senha e conferência das duas senhas.
+   ========================================================================= */
+
+.acesso__cartao--largo { max-width: 452px; }
+
+.campo__linha { position: relative; }
+
+.campo__linha .campo__entrada { padding-right: 34px; }
+
+.campo__olho {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: 0;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--tinta-suave);
+  line-height: 0;
+}
+
+.campo__olho:hover { color: var(--verde-profundo); }
+.campo__olho svg { width: 18px; height: 18px; }
+
+/* --- medidor de força da senha ------------------------------------------ */
+
+.forca { margin-top: 10px; }
+
+.forca__trilho {
+  height: 5px;
+  background: var(--linha);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.forca__barra {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: var(--perigo);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.forca[data-nivel="1"] .forca__barra { width: 33%;  background: var(--perigo); }
+.forca[data-nivel="2"] .forca__barra { width: 66%;  background: #c08a2e; }
+.forca[data-nivel="3"] .forca__barra { width: 100%; background: var(--verde); }
+
+.forca__texto {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: var(--tinta-suave);
+  margin-top: 6px;
+}
+
+.forca__rotulo { font-weight: 700; }
+.forca[data-nivel="1"] .forca__rotulo { color: var(--perigo); }
+.forca[data-nivel="2"] .forca__rotulo { color: #c08a2e; }
+.forca[data-nivel="3"] .forca__rotulo { color: var(--verde); }
+
+/* --- conferência das senhas --------------------------------------------- */
+
+.conferencia {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.conferencia.esta-visivel { display: flex; }
+.conferencia svg { width: 14px; height: 14px; flex-shrink: 0; }
+.conferencia[data-confere="true"] { color: var(--verde); }
+.conferencia[data-confere="false"] { color: var(--perigo); }
+
+/* --- aceite dos termos --------------------------------------------------- */
+
+.termos {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.84rem;
+  color: var(--tinta-suave);
+  margin: 22px 0;
+  cursor: pointer;
+}
+
+.termos input { accent-color: var(--verde); margin-top: 3px; flex-shrink: 0; }
+.termos a { color: var(--verde); font-weight: 600; }
+
+.botao:disabled { opacity: 0.5; cursor: not-allowed; }
+.botao:disabled:hover { background: var(--verde); }
+
+/* =========================================================================
+   8. ROTEIRO EM MAPA (mapa.html) — RQ006
+   Mapa Leaflet com blocos do OpenStreetMap, marcadores numerados por
+   ordem de visita e lista lateral sincronizada com o mapa.
+   ========================================================================= */
+
+.alternancia {
+  display: inline-flex;
+  gap: 4px;
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.alternancia__opcao {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  padding: 7px 15px;
+  font-family: var(--corpo);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--tinta-suave);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.16s ease;
+}
+
+.alternancia__opcao svg { width: 15px; height: 15px; }
+.alternancia__opcao:hover { color: var(--verde-profundo); }
+
+.alternancia__opcao[aria-current="page"] {
+  background: var(--verde-profundo);
+  color: #fff;
+}
+
+.mapa-area {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+#mapa {
+  height: 460px;
+  border-radius: var(--raio-g);
+  border: 1px solid var(--linha);
+  overflow: hidden;
+  background: var(--casca-clara);
+  z-index: 0;
+}
+
+.paradas-mapa {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+  max-height: 460px;
+  overflow-y: auto;
+}
+
+.parada-mapa {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 12px 14px;
+  font-family: var(--corpo);
+  cursor: pointer;
+  transition: border-color 0.16s ease, background-color 0.16s ease;
+}
+
+.parada-mapa:hover { border-color: var(--verde-claro); }
+
+.parada-mapa[aria-current="true"] {
+  border-color: var(--verde);
+  background: #e8f1ef;
+}
+
+.parada-mapa__numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.parada-mapa__texto { min-width: 0; }
+
+.parada-mapa__nome {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.parada-mapa__meta {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--tinta-suave);
+  margin-top: 2px;
+}
+
+.mapa-ajuda {
+  font-size: 0.84rem;
+  color: var(--tinta-suave);
+  margin-top: 18px;
+}
+
+/* Marcador numerado desenhado em SVG, sem dependência de imagem externa */
+.marcador-numero {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  font-family: var(--corpo);
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 2.5px solid #fff;
+  box-shadow: 0 2px 6px rgba(15, 59, 69, 0.35);
+}
+
+.leaflet-popup-content { font-family: var(--corpo); margin: 12px 14px; }
+.leaflet-popup-content strong { font-family: var(--display); font-size: 0.98rem; }
+
+.popup-meta {
+  font-size: 0.8rem;
+  color: var(--tinta-suave);
+  margin-top: 5px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =========================================================================
+   9. HISTÓRICO DE VIAGENS (historico.html) — RQ011
+   Resumo em números, busca por destino ou interesse e viagens
+   agrupadas por ano.
+   ========================================================================= */
+
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.resumo__item {
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-g);
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.resumo__item svg {
+  width: 20px;
+  height: 20px;
+  color: var(--verde);
+  margin-bottom: 9px;
+}
+
+.resumo__numero {
+  font-family: var(--display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--verde-profundo);
+}
+
+.resumo__rotulo {
+  font-size: 0.78rem;
+  color: var(--tinta-suave);
+  margin-top: 7px;
+}
+
+.busca { position: relative; margin-bottom: 32px; }
+
+.busca svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 17px;
+  height: 17px;
+  color: var(--tinta-suave);
+  pointer-events: none;
+}
+
+.busca__campo {
+  width: 100%;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  background: var(--casca-clara);
+  font-family: var(--corpo);
+  font-size: 0.95rem;
+  color: var(--tinta);
+  padding: 13px 18px 13px 44px;
+  transition: border-color 0.18s ease;
+}
+
+.busca__campo:hover { border-color: var(--verde-claro); }
+.busca__campo:focus { outline: none; border-color: var(--verde); }
+
+.ano { margin-bottom: 36px; }
+
+.ano__titulo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.ano__titulo h2 { font-size: 1.3rem; flex-shrink: 0; }
+.ano__titulo::after { content: ""; height: 1px; background: var(--linha); flex: 1; }
+
+.viagem__interesses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.interesse-etiqueta {
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--sage-fundo, #e4ecea);
+  color: var(--tinta-suave);
+}
+
+.viagem__acoes { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.viagem__acoes .botao {
+  font-size: 0.82rem;
+  padding: 10px 13px;
+  white-space: nowrap;
+}
+
+.viagem__acoes .botao--claro { flex: 1; }
+
+.vazio-busca {
+  border: 1px dashed var(--linha);
+  border-radius: var(--raio-g);
+  padding: 44px 24px;
+  text-align: center;
+  color: var(--tinta-suave);
+  font-size: 0.92rem;
+}
+
+/* =========================================================================
+   10. RESPONSIVO DAS TELAS 7 A 9
+   ========================================================================= */
+
+@media (max-width: 860px) {
+  .mapa-area { grid-template-columns: 1fr; }
+  #mapa { height: 340px; }
+  .paradas-mapa { max-height: none; }
+
+  .resumo { grid-template-columns: 1fr; gap: 12px; }
+  .resumo__item { display: flex; align-items: center; gap: 14px; text-align: left; padding: 16px 18px; }
+  .resumo__item svg { margin-bottom: 0; }
+  .resumo__rotulo { margin-top: 2px; }
+
+  .viagem__acoes { flex-direction: column; }
+}
+
+/* =========================================================================
+   11. AVISO DE CONTEÚDO DEMONSTRATIVO
+   Exibido quando o destino pedido ainda não tem roteiro gerado, já que a
+   geração automática por inteligência artificial (RQ004) está prevista
+   para a Sprint 3.
+   ========================================================================= */
+
+.demonstrativo {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #f1f6f5;
+  border: 1px solid var(--areia);
+  border-left: 4px solid var(--areia);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  padding: 14px 18px;
+  margin-bottom: 26px;
+  font-size: 0.88rem;
+  color: var(--tinta-suave);
+  line-height: 1.5;
+}
+
+.demonstrativo svg {
+  width: 18px;
+  height: 18px;
+  color: var(--verde);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.demonstrativo strong {
+  display: block;
+  color: var(--verde-profundo);
+  margin-bottom: 2px;
+}
+
+/* =========================================================================
+   12. FOTOS DE DESTINO
+   Como a paleta é sóbria, a identidade de site de viagem vem das imagens:
+   foto de fundo no acesso e no cadastro, e foto no topo dos cartões de
+   viagem. Fotos do Unsplash, cuja licença permite o uso sem custo.
+   Sem internet, a foto não carrega e fica o degradê da paleta.
+   ========================================================================= */
+
+.acesso--foto {
+  background:
+    linear-gradient(rgba(19, 78, 90, 0.65), rgba(19, 78, 90, 0.78)),
+    url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80&fit=crop") center / cover,
+    var(--verde-profundo);
+}
+
+.acesso__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-bottom: 22px;
+}
+
+.acesso__logo svg { width: 28px; height: 28px; color: var(--verde); }
+.acesso__logo .acesso__marca { margin: 0; }
+
+.acesso__titulo {
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 0 0 4px;
+}
+
+.viagem__capa--foto {
+  position: relative;
+  height: 172px;
+  overflow: hidden;
+}
+
+.viagem__capa--foto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Escurece a base da foto para o texto sobreposto continuar legível. */
+.viagem__capa--foto:has(img)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 60%);
+}
+
+.viagem__selo {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--verde);
+}
+
+.viagem__selo.etiqueta--planejando { color: var(--verde-profundo); }
+.viagem__selo.etiqueta--andamento { background: var(--verde); color: #fff; }
+.viagem__selo.etiqueta--concluida { color: var(--tinta-suave); }
+
+.viagem__legenda {
+  position: absolute;
+  left: 18px;
+  bottom: 12px;
+  z-index: 1;
+  color: #fff;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+/* =========================================================================
+   13. CATEGORIAS DE ATIVIDADE
+   Uma cor por categoria, usada na etiqueta do cartão e no marcador do
+   mapa. Todas em tons frios, para não contrariar a paleta. As mesmas cores
+   estão em js/comum.js, para o mapa.
+   ========================================================================= */
+
+.categoria {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: #e4ecea;
+  color: var(--tinta-suave);
+  white-space: nowrap;
+}
+
+.categoria--cultura      { background: #e3e9f5; color: #3a5a9b; }
+.categoria--gastronomia  { background: #dcefec; color: #0b6d62; }
+.categoria--arte         { background: #ece6f5; color: #6b4f9e; }
+.categoria--natureza     { background: #e1efe3; color: #3d7a46; }
+.categoria--historia     { background: #e6e9ed; color: #4f5b6a; }
+.categoria--compras      { background: #dfedf3; color: #236b88; }
+.categoria--vida-noturna { background: #e2e5f0; color: #2f3e73; }
+.categoria--praia        { background: #dcf0f4; color: #177d92; }
+
+/* =========================================================================
+   14. BARRA LATERAL — marca com ícone e navegação inferior no celular
+   ========================================================================= */
+
+.barra__marca { display: flex; align-items: center; gap: 8px; }
+.barra__marca svg { width: 22px; height: 22px; color: var(--verde-claro); }
+
+.barra__curto { display: none; }
+
+.barra__sair {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--verde-claro);
+  cursor: pointer;
+}
+
+.barra__sair:hover { color: #fff; }
+.barra__sair svg { width: 16px; height: 16px; }
+
+/* No celular a barra vira uma navegação fixa no rodapé, como no protótipo.
+   Esta regra vem depois da seção 5 de propósito, para prevalecer sobre ela. */
+@media (max-width: 860px) {
+  .painel { padding-bottom: 70px; }
+
+  .barra {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    gap: 0;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+  }
+
+  .barra__marca, .barra__perfil { display: none; }
+
+  .barra__menu { display: contents; }
+
+  .barra__item, .barra__sair {
+    flex-direction: column;
+    gap: 4px;
+    padding: 7px 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .barra__item[aria-current="page"] { background: transparent; color: #fff; }
+  .barra__item svg, .barra__sair svg { width: 20px; height: 20px; }
+
+  .barra__longo { display: none; }
+  .barra__curto { display: inline; }
+
+  .barra__fim { margin: 0; font-size: inherit; }
+}
+
+/* =========================================================================
+   15. ESTADOS DE CARREGAMENTO E ERRO DA API
+   ========================================================================= */
+
+/* O atributo hidden precisa vencer as classes que definem display (botões,
+   abas, avisos); sem isto, um elemento escondido continua aparecendo. */
+[hidden] { display: none !important; }
+
+/* Os números do resumo (histórico e perfil) são parágrafos: sem zerar a
+   margem padrão, os cartões ficam com espaço vertical demais. */
+.resumo__numero, .resumo__rotulo, .perfil__nome, .perfil__dado { margin-bottom: 0; }
+.resumo__numero, .perfil__nome { margin-top: 0; }
+.perfil__dado { margin-top: 2px; }
+
+.carregando {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--tinta-suave);
+  font-size: 0.92rem;
+  padding: 28px 0;
+}
+
+.carregando::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2.5px solid var(--linha);
+  border-top-color: var(--verde);
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar { to { transform: rotate(360deg); } }
+
+.falha {
+  background: #f6e4e2;
+  border: 1px solid #e8c6c2;
+  border-radius: var(--raio);
+  color: var(--perigo);
+  padding: 16px 18px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.falha strong { display: block; margin-bottom: 2px; }
+
+.aviso--info { background: #e4efed; color: var(--verde-profundo); }
+
+/* Estado vazio com chamada para ação (lista de viagens, roteiro sem atividades) */
+.vazio-acao {
+  border: 2px dashed var(--linha);
+  border-radius: var(--raio-g);
+  background: var(--casca-clara);
+  padding: 52px 24px;
+  text-align: center;
+}
+
+.vazio-acao svg { width: 48px; height: 48px; color: var(--areia); margin-bottom: 14px; }
+.vazio-acao h2 { font-size: 1.25rem; margin-bottom: 6px; }
+.vazio-acao p { color: var(--tinta-suave); font-size: 0.92rem; margin: 0 0 22px; }
+
+/* =========================================================================
+   16. ROTEIRO — notas, reordenação e inclusão ligadas à API
+   ========================================================================= */
+
+.cabecalho__acoes { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+.parada__etiquetas { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.parada__nota { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.parada__nota-texto { white-space: pre-wrap; }
+.parada__nota-acoes { display: flex; gap: 4px; flex-shrink: 0; }
+
+.botao-icone {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  border: 1px solid var(--linha);
+  background: transparent;
+  color: var(--tinta-suave);
+  cursor: pointer;
+  transition: border-color 0.16s ease, color 0.16s ease, background-color 0.16s ease;
+}
+
+.botao-icone svg { width: 15px; height: 15px; }
+.botao-icone:hover:not(:disabled) { border-color: var(--verde-claro); color: var(--verde-profundo); }
+.botao-icone:disabled { opacity: 0.35; cursor: not-allowed; }
+.botao-icone--perigo:hover:not(:disabled) { border-color: var(--perigo); color: var(--perigo); background: #f6e4e2; }
+.botao-icone--pequeno { width: 26px; height: 26px; border: 0; }
+
+.parada__acoes .parada__mover { display: flex; gap: 4px; margin-left: auto; }
+
+.nota-editor {
+  margin-top: 12px;
+  border-top: 1px solid var(--linha);
+  padding-top: 12px;
+}
+
+.nota-editor textarea {
+  width: 100%;
+  min-height: 78px;
+  resize: vertical;
+  border: 1px solid var(--linha);
+  border-radius: 10px;
+  background: var(--casca);
+  font-family: var(--corpo);
+  font-size: 0.9rem;
+  color: var(--tinta);
+  padding: 10px 12px;
+}
+
+.nota-editor textarea:focus { outline: none; border-color: var(--verde); }
+.nota-editor__acoes { display: flex; gap: 8px; margin-top: 8px; }
+.nota-editor__acoes .botao { font-size: 0.82rem; padding: 8px 14px; }
+
+.inclusao__grade--categoria { grid-template-columns: 2fr 1fr 1fr auto; }
+
+.parada[data-ocupada="true"] .parada__cartao { opacity: 0.55; pointer-events: none; }
+
+/* Mensagens e estados vazios dentro da trilha não levam a linha do tempo. */
+.trilha[data-vazio="true"] { padding-left: 0; }
+.trilha[data-vazio="true"]::before { display: none; }
+
+/* Custo: a moeda é a do destino, e a API não informa qual é. */
+.custo__moeda { color: var(--tinta-suave); font-size: 0.74rem; }
+
+/* =========================================================================
+   17. AUTOCOMPLETE DE DESTINO (nova-viagem.html)
+   Sugestões do Photon, serviço gratuito baseado no OpenStreetMap. Sem
+   internet, o campo continua funcionando como texto livre.
+   ========================================================================= */
+
+.autocomplete { position: relative; }
+
+.sugestoes {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.sugestao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  border-radius: 9px;
+  padding: 10px 12px;
+  text-align: left;
+  font-family: var(--corpo);
+  font-size: 0.92rem;
+  color: var(--tinta);
+  cursor: pointer;
+}
+
+.sugestao[aria-selected="true"], .sugestao:hover { background: #e4efed; }
+.sugestao svg { width: 15px; height: 15px; color: var(--verde); flex-shrink: 0; }
+.sugestao__nome { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sugestao__tipo { font-size: 0.72rem; color: var(--tinta-suave); background: #e4ecea; padding: 2px 8px; border-radius: 999px; }
+
+/* =========================================================================
+   18. PERFIL DE VIAJANTE (perfil.html)
+   ========================================================================= */
+
+.perfil__conta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-g);
+  padding: 20px 22px;
+  margin-bottom: 26px;
+}
+
+.perfil__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--areia);
+  color: var(--verde-profundo);
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.perfil__nome { font-family: var(--display); font-size: 1.15rem; font-weight: 600; }
+.perfil__dado { color: var(--tinta-suave); font-size: 0.86rem; margin-top: 2px; }
+
+.secao-titulo { font-size: 1.2rem; margin: 34px 0 6px; }
+.secao-ajuda { color: var(--tinta-suave); font-size: 0.9rem; margin: 0 0 18px; }
+
+.preferencias {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-g);
+  overflow: hidden;
+}
+
+.preferencia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--linha);
+}
+
+.preferencia:last-child { border-bottom: 0; }
+
+.niveis { display: flex; gap: 6px; }
+
+.nivel {
+  min-width: 38px;
+  height: 34px;
+  border-radius: 9px;
+  border: 1px solid var(--linha);
+  background: transparent;
+  font-family: var(--corpo);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--tinta-suave);
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.nivel:hover { border-color: var(--verde-claro); color: var(--verde-profundo); }
+.nivel[aria-pressed="true"] { background: var(--verde); border-color: var(--verde); color: #fff; }
+.nivel--nenhum[aria-pressed="true"] { background: var(--tinta-suave); border-color: var(--tinta-suave); }
+
+.perfil__salvar { display: flex; align-items: center; gap: 14px; margin-top: 16px; flex-wrap: wrap; }
+.perfil__status { font-size: 0.86rem; color: var(--verde); font-weight: 600; }
+
+.locais {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.local-visitado {
+  background: var(--casca-clara);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 15px 16px;
+  display: grid;
+  gap: 6px;
+}
+
+.local-visitado__nome { font-weight: 700; }
+.local-visitado__onde { font-size: 0.82rem; color: var(--tinta-suave); }
+
+/* =========================================================================
+   19. DIÁLOGO (reaproveitar viagem do histórico)
+   ========================================================================= */
+
+.dialogo {
+  border: 0;
+  border-radius: var(--raio-g);
+  padding: 26px 26px 22px;
+  width: min(420px, calc(100% - 32px));
+  background: var(--casca-clara);
+  color: var(--tinta);
+  box-shadow: var(--sombra);
+}
+
+.dialogo::backdrop { background: rgba(15, 59, 69, 0.45); }
+.dialogo h2 { font-size: 1.25rem; margin-bottom: 6px; }
+.dialogo p { color: var(--tinta-suave); font-size: 0.9rem; margin: 0 0 18px; }
+.dialogo__acoes { display: flex; justify-content: flex-end; gap: 10px; margin-top: 6px; }
+
+/* =========================================================================
+   20. RESPONSIVO DAS SEÇÕES 12 A 19
+   ========================================================================= */
+
+@media (max-width: 860px) {
+  .inclusao__grade--categoria { grid-template-columns: 1fr; }
+  .preferencia { flex-direction: column; align-items: flex-start; }
+  .niveis { flex-wrap: wrap; }
+  .parada__acoes .parada__mover { margin-left: 0; }
+}

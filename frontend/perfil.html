@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfil de viajante — TripScripter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<div class="painel">
+
+  <!-- ============ Barra lateral ============ -->
+  <nav class="barra" aria-label="Menu principal">
+    <span class="barra__marca">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"></path>
+        <path d="M8 2v16M16 6v16"></path>
+      </svg>
+      TripScripter
+    </span>
+
+    <div class="barra__perfil">
+      <span class="barra__avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </span>
+      <span>
+        <span class="barra__nome"></span><br>
+        <span class="barra__papel"></span>
+      </span>
+    </div>
+
+    <ul class="barra__menu">
+      <li>
+        <a class="barra__item" href="viagens.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span class="barra__longo">Minhas viagens</span><span class="barra__curto">Viagens</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="nova-viagem.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14M5 12h14"></path>
+          </svg>
+          <span class="barra__longo">Nova viagem</span><span class="barra__curto">Nova</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="historico.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 3v5h5"></path>
+            <path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path>
+            <path d="M12 7v5l3 2"></path>
+          </svg>
+          <span class="barra__longo">Histórico</span><span class="barra__curto">Histórico</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="perfil.html" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="barra__longo">Perfil de viajante</span><span class="barra__curto">Perfil</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="barra__fim">
+      <button type="button" class="barra__sair" data-sair>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"></path>
+        </svg>
+        <span class="barra__longo">Sair da conta</span><span class="barra__curto">Sair</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ Conteúdo ============ -->
+  <main class="conteudo">
+
+    <header class="cabecalho">
+      <div>
+        <h1>Perfil de viajante</h1>
+        <p>Seus interesses orientam cada roteiro gerado. Ajuste-os quando quiser.</p>
+      </div>
+    </header>
+
+    <!-- Dados da conta (GET /api/usuario/) -->
+    <section class="perfil__conta" id="conta" aria-label="Dados da conta">
+      <span class="perfil__avatar" id="iniciais" aria-hidden="true"></span>
+      <div>
+        <p class="perfil__nome" id="perfilNome">Carregando…</p>
+        <p class="perfil__dado" id="perfilEmail"></p>
+        <p class="perfil__dado" id="perfilDesde"></p>
+      </div>
+    </section>
+
+    <!-- Resumo das viagens concluídas -->
+    <section class="resumo" aria-label="Resumo das viagens concluídas">
+      <div class="resumo__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"></path>
+        </svg>
+        <div>
+          <p class="resumo__numero" id="totalPaises">–</p>
+          <p class="resumo__rotulo">Países visitados</p>
+        </div>
+      </div>
+      <div class="resumo__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <div>
+          <p class="resumo__numero" id="totalCidades">–</p>
+          <p class="resumo__rotulo">Cidades</p>
+        </div>
+      </div>
+      <div class="resumo__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+        <div>
+          <p class="resumo__numero" id="totalLocais">–</p>
+          <p class="resumo__rotulo">Locais visitados</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preferências (GET e PUT /api/preferencias/) -->
+    <h2 class="secao-titulo">Seus interesses</h2>
+    <p class="secao-ajuda">
+      De 1 (pouco) a 5 (muito). As categorias marcadas como “Não” ficam de fora das sugestões.
+    </p>
+    <form id="formPreferencias">
+      <ul class="preferencias" id="listaPreferencias">
+        <li class="preferencia"><span class="carregando" style="padding:0">Carregando…</span></li>
+      </ul>
+      <div class="perfil__salvar">
+        <button type="submit" class="botao botao--primario" id="btnSalvar">Salvar interesses</button>
+        <span class="perfil__status" id="statusPreferencias" role="status"></span>
+      </div>
+    </form>
+
+    <!-- Lugares das viagens concluídas -->
+    <h2 class="secao-titulo">Locais visitados</h2>
+    <p class="secao-ajuda">Os lugares das suas viagens já concluídas.</p>
+    <div id="locaisVisitados" aria-live="polite">
+      <p class="carregando">Carregando…</p>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/comum.js"></script>
+<script src="js/api.js"></script>
+<script src="js/perfil.js"></script>
+</body>
+</html>

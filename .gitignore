@@ -1,0 +1,48 @@
+# Sistemas operacionais
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ambiente local
+.env
+.env.*
+!.env.example
+!.env.demo
+*.local
+
+# Dependências e builds comuns
+node_modules/
+vendor/
+dist/
+build/
+target/
+out/
+bin/
+obj/
+
+# Python
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+
+# Logs e temporários
+*.log
+tmp/
+temp/
+
+# Arquivos sensíveis
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Modo de demonstração: banco SQLite gerado e dependências baixadas
+*.sqlite3
+pacotes/

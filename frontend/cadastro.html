@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Criar conta — TripScripter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <main class="acesso acesso--foto">
+    <div class="acesso__cartao acesso__cartao--largo">
+
+      <div class="acesso__logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"></path>
+          <path d="M8 2v16M16 6v16"></path>
+        </svg>
+        <span class="acesso__marca">TripScripter</span>
+      </div>
+
+      <h1 class="acesso__titulo">Crie sua conta</h1>
+      <p class="acesso__linha-fina">Comece a planejar suas viagens com inteligência artificial</p>
+
+      <p class="aviso" id="aviso" role="alert"></p>
+
+      <form id="formCadastro" novalidate>
+
+        <div class="campo" id="campoNome">
+          <label class="campo__rotulo" for="nome">Nome completo</label>
+          <input class="campo__entrada" type="text" id="nome" name="nome"
+                 placeholder="Seu nome" autocomplete="name" required>
+          <p class="campo__erro" id="erroNome">Informe nome e sobrenome.</p>
+        </div>
+
+        <div class="campo" id="campoEmail">
+          <label class="campo__rotulo" for="email">E-mail</label>
+          <input class="campo__entrada" type="email" id="email" name="email"
+                 placeholder="voce@email.com" autocomplete="email" required>
+          <p class="campo__erro" id="erroEmail">Esse e-mail não parece válido.</p>
+        </div>
+
+        <div class="campo campo--senha" id="campoSenha">
+          <label class="campo__rotulo" for="senha">Senha</label>
+          <div class="campo__linha">
+          <input class="campo__entrada" type="password" id="senha" name="senha"
+                   placeholder="••••••••" autocomplete="new-password" required>
+            <button type="button" class="campo__olho" id="olhoSenha"
+                    aria-label="Mostrar senha" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+
+          <div class="forca" id="forca" data-nivel="0" hidden>
+            <div class="forca__trilho"><div class="forca__barra"></div></div>
+            <div class="forca__texto">
+              <span id="forcaDica"></span>
+              <span class="forca__rotulo" id="forcaRotulo"></span>
+            </div>
+          </div>
+
+          <p class="campo__erro" id="erroSenha">A senha precisa ter ao menos 8 caracteres.</p>
+        </div>
+
+        <div class="campo campo--senha" id="campoConfirma">
+          <label class="campo__rotulo" for="confirma">Confirmar senha</label>
+          <div class="campo__linha">
+          <input class="campo__entrada" type="password" id="confirma" name="confirma"
+                   placeholder="••••••••" autocomplete="new-password" required>
+            <button type="button" class="campo__olho" id="olhoConfirma"
+                    aria-label="Mostrar confirmação da senha" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+
+          <p class="conferencia" id="conferencia" aria-live="polite">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+                 stroke-linecap="round" stroke-linejoin="round" id="conferenciaIcone">
+              <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+            <span id="conferenciaTexto"></span>
+          </p>
+        </div>
+
+        <label class="termos">
+          <input type="checkbox" id="termos">
+          <span>
+            Li e aceito os <a href="#">Termos de uso</a> e a
+            <a href="#">Política de privacidade</a>
+          </span>
+        </label>
+
+        <button type="submit" class="botao botao--primario botao--cheio" id="btnCriar" disabled>
+          Criar conta
+        </button>
+      </form>
+
+      <p class="acesso__rodape">
+        Já tem uma conta? <a href="index.html">Fazer login</a>
+      </p>
+
+    </div>
+  </main>
+
+  <script src="js/comum.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cadastro.js"></script>
+</body>
+</html>

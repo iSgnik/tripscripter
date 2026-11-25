@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar — TripScripter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <main class="acesso acesso--foto">
+    <div class="acesso__cartao">
+
+      <div class="acesso__logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"></path>
+          <path d="M8 2v16M16 6v16"></path>
+        </svg>
+        <span class="acesso__marca">TripScripter</span>
+      </div>
+
+      <h1 class="acesso__titulo">Bem-vindo de volta</h1>
+      <p class="acesso__linha-fina">Entre para continuar planejando suas viagens</p>
+
+      <p class="aviso" id="aviso" role="alert"></p>
+
+      <form id="formAcesso" novalidate>
+        <div class="campo">
+          <label class="campo__rotulo" for="email">E-mail</label>
+          <input class="campo__entrada" type="email" id="email" name="email"
+                 placeholder="voce@email.com" autocomplete="email" required>
+        </div>
+
+        <div class="campo">
+          <label class="campo__rotulo" for="senha">Senha</label>
+          <div class="campo__linha">
+            <input class="campo__entrada" type="password" id="senha" name="senha"
+                   placeholder="••••••••" autocomplete="current-password" required>
+            <button type="button" class="campo__olho" id="olhoSenha" aria-label="Mostrar senha">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="acesso__opcoes">
+          <label class="acesso__lembrar">
+            <input type="checkbox" id="lembrar"> Manter conectado
+          </label>
+          <a href="#" id="esqueci">Esqueci a senha</a>
+        </div>
+
+        <button type="submit" class="botao botao--primario botao--cheio" id="btnEntrar">Entrar</button>
+      </form>
+
+      <p class="acesso__rodape">
+        Ainda não tem conta? <a href="cadastro.html">Criar conta</a>
+      </p>
+
+    </div>
+  </main>
+
+  <script src="js/comum.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/acesso.js"></script>
+</body>
+</html>

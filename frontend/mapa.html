@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roteiro em mapa — TripScripter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Leaflet 1.9.4 incluído no projeto, para o mapa não depender de CDN (licença em bibliotecas/leaflet/LICENSE) -->
+  <link rel="stylesheet" href="bibliotecas/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<div class="painel">
+
+  <!-- ============ Barra lateral ============ -->
+  <nav class="barra" aria-label="Menu principal">
+    <span class="barra__marca">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"></path>
+        <path d="M8 2v16M16 6v16"></path>
+      </svg>
+      TripScripter
+    </span>
+
+    <div class="barra__perfil">
+      <span class="barra__avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </span>
+      <span>
+        <span class="barra__nome"></span><br>
+        <span class="barra__papel"></span>
+      </span>
+    </div>
+
+    <ul class="barra__menu">
+      <li>
+        <a class="barra__item" href="viagens.html" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span class="barra__longo">Minhas viagens</span><span class="barra__curto">Viagens</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="nova-viagem.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14M5 12h14"></path>
+          </svg>
+          <span class="barra__longo">Nova viagem</span><span class="barra__curto">Nova</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="historico.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 3v5h5"></path>
+            <path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path>
+            <path d="M12 7v5l3 2"></path>
+          </svg>
+          <span class="barra__longo">Histórico</span><span class="barra__curto">Histórico</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="perfil.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="barra__longo">Perfil de viajante</span><span class="barra__curto">Perfil</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="barra__fim">
+      <button type="button" class="barra__sair" data-sair>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"></path>
+        </svg>
+        <span class="barra__longo">Sair da conta</span><span class="barra__curto">Sair</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ Conteúdo ============ -->
+  <main class="conteudo">
+
+    <header class="cabecalho">
+      <div>
+        <h1 id="destinoTitulo">Carregando…</h1>
+        <p id="resumoViagem"></p>
+      </div>
+
+      <div class="alternancia" role="group" aria-label="Forma de visualização">
+        <a class="alternancia__opcao" href="roteiro.html" id="linkLista">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path>
+          </svg>
+          Lista
+        </a>
+        <span class="alternancia__opcao" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"></path>
+            <path d="M8 2v16M16 6v16"></path>
+          </svg>
+          Mapa
+        </span>
+      </div>
+    </header>
+
+    <div class="dias" role="tablist" aria-label="Dias da viagem" id="abasDias"></div>
+
+    <div class="mapa-area">
+      <div id="mapa" role="application" aria-label="Mapa com os locais do dia selecionado"></div>
+      <ol class="paradas-mapa" id="paradasMapa"></ol>
+    </div>
+
+    <p class="mapa-ajuda">
+      Clique em uma parada da lista para centralizar o mapa nela. A linha tracejada
+      mostra a ordem das visitas ao longo do dia.
+    </p>
+
+  </main>
+</div>
+
+<script src="bibliotecas/leaflet/leaflet.js"></script>
+<script src="js/comum.js"></script>
+<script src="js/api.js"></script>
+<script src="js/mapa.js"></script>
+</body>
+</html>

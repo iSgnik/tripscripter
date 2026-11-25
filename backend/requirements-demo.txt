@@ -1,0 +1,7 @@
+# Dependências do modo de demonstração (DB_MOTOR=sqlite).
+# São as de requirements.txt, menos o psycopg, que só o PostgreSQL usa.
+Django==6.1.2
+djangorestframework==3.18.3
+django-cors-headers==4.9.0
+python-dotenv==1.2.3
+tzdata==2026.5  # exigido pelo Django no Windows

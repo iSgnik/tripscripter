@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nova viagem — TripScripter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<div class="painel">
+
+  <!-- ============ Barra lateral ============ -->
+  <nav class="barra" aria-label="Menu principal">
+    <span class="barra__marca">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"></path>
+        <path d="M8 2v16M16 6v16"></path>
+      </svg>
+      TripScripter
+    </span>
+
+    <div class="barra__perfil">
+      <span class="barra__avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </span>
+      <span>
+        <span class="barra__nome"></span><br>
+        <span class="barra__papel"></span>
+      </span>
+    </div>
+
+    <ul class="barra__menu">
+      <li>
+        <a class="barra__item" href="viagens.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span class="barra__longo">Minhas viagens</span><span class="barra__curto">Viagens</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="nova-viagem.html" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14M5 12h14"></path>
+          </svg>
+          <span class="barra__longo">Nova viagem</span><span class="barra__curto">Nova</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="historico.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 3v5h5"></path>
+            <path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path>
+            <path d="M12 7v5l3 2"></path>
+          </svg>
+          <span class="barra__longo">Histórico</span><span class="barra__curto">Histórico</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="perfil.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="barra__longo">Perfil de viajante</span><span class="barra__curto">Perfil</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="barra__fim">
+      <button type="button" class="barra__sair" data-sair>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"></path>
+        </svg>
+        <span class="barra__longo">Sair da conta</span><span class="barra__curto">Sair</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ Conteúdo ============ -->
+  <main class="conteudo">
+
+    <header class="cabecalho">
+      <div>
+        <h1>Nova viagem</h1>
+        <p>Três passos e o TripScripter monta o roteiro dia a dia para você.</p>
+      </div>
+    </header>
+
+    <div class="assistente">
+
+      <!-- Barra de progresso (RQ003) -->
+      <div class="progresso" id="progresso">
+        <div class="progresso__trilho">
+          <div class="progresso__preenchido" id="progressoPreenchido"></div>
+        </div>
+        <div class="progresso__texto">
+          <span class="progresso__passo" id="progressoRotulo">Passo 1 de 3 · Destino e período</span>
+          <span id="progressoPorcento">33%</span>
+        </div>
+      </div>
+
+      <form id="formViagem" novalidate>
+
+        <!-- ---------- Passo 1: destino e período ---------- -->
+        <section class="passo" data-passo="1" data-ativo="true" aria-labelledby="tituloPasso1">
+          <h2 class="passo__titulo" id="tituloPasso1">Para onde vamos?</h2>
+          <p class="passo__ajuda">
+            Informe a cidade e as datas. O período define quantos dias o roteiro vai cobrir.
+          </p>
+
+          <div class="campo" id="campoDestino">
+            <label class="campo__rotulo" for="destino">Cidade e país</label>
+            <div class="autocomplete">
+              <input class="campo__caixa" type="text" id="destino" name="destino"
+                     placeholder="Ex.: Tóquio, Lisboa, Buenos Aires" autocomplete="off"
+                     role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="sugestoes">
+              <ul class="sugestoes" id="sugestoes" role="listbox" hidden></ul>
+            </div>
+            <p class="campo__erro" id="erroDestino">Informe o destino da viagem.</p>
+          </div>
+
+          <div class="passo__dupla">
+            <div class="campo">
+              <label class="campo__rotulo" for="ida">Chegada</label>
+              <input class="campo__caixa" type="date" id="ida" name="ida">
+            </div>
+            <div class="campo">
+              <label class="campo__rotulo" for="volta">Retorno</label>
+              <input class="campo__caixa" type="date" id="volta" name="volta">
+            </div>
+          </div>
+
+          <p class="duracao" id="duracao"></p>
+          <p class="campo__erro" id="erroDatas">
+            Escolha a chegada e o retorno, com o retorno a partir da data de chegada,
+            num período de até 30 dias.
+          </p>
+
+          <div class="passo__navegacao">
+            <a class="botao botao--fantasma" href="viagens.html">Cancelar</a>
+            <button type="button" class="botao botao--primario" data-ir="2">Próximo</button>
+          </div>
+        </section>
+
+        <!-- ---------- Passo 2: preferências ---------- -->
+        <section class="passo" data-passo="2" aria-labelledby="tituloPasso2">
+          <h2 class="passo__titulo" id="tituloPasso2">O que você gosta de fazer?</h2>
+          <p class="passo__ajuda">
+            Escolha ao menos um interesse. É isso que orienta as sugestões do roteiro.
+          </p>
+
+          <fieldset class="interesses" id="interesses">
+            <legend class="campo__rotulo">Interesses</legend>
+            <label class="interesse"><input type="checkbox" name="pref" value="Gastronomia"><span>Gastronomia</span></label>
+            <label class="interesse"><input type="checkbox" name="pref" value="Cultura"><span>Cultura</span></label>
+            <label class="interesse"><input type="checkbox" name="pref" value="Natureza"><span>Natureza</span></label>
+            <label class="interesse"><input type="checkbox" name="pref" value="História"><span>História</span></label>
+            <label class="interesse"><input type="checkbox" name="pref" value="Arte"><span>Arte</span></label>
+            <label class="interesse"><input type="checkbox" name="pref" value="Compras"><span>Compras</span></label>
+            <label class="interesse"><input type="checkbox" name="pref" value="Vida noturna"><span>Vida noturna</span></label>
+            <label class="interesse"><input type="checkbox" name="pref" value="Praia"><span>Praia</span></label>
+          </fieldset>
+          <p class="campo__erro" id="erroPref">Escolha ao menos um interesse.</p>
+
+          <div class="campo" style="margin-top:26px">
+            <label class="campo__rotulo" for="ritmo">Ritmo da viagem</label>
+            <select class="campo__caixa" id="ritmo" name="ritmo">
+              <option value="Tranquilo">Tranquilo — até 3 atividades por dia, sem pressa</option>
+              <option value="Equilibrado" selected>Equilibrado — até 4 atividades por dia</option>
+              <option value="Intenso">Intenso — até 6 atividades por dia</option>
+            </select>
+          </div>
+
+          <div class="passo__navegacao">
+            <button type="button" class="botao botao--fantasma" data-ir="1">Voltar</button>
+            <button type="button" class="botao botao--primario" data-ir="3">Próximo</button>
+          </div>
+        </section>
+
+        <!-- ---------- Passo 3: revisão ---------- -->
+        <section class="passo" data-passo="3" aria-labelledby="tituloPasso3">
+          <h2 class="passo__titulo" id="tituloPasso3">Confira antes de gerar</h2>
+          <p class="passo__ajuda">
+            Se algo estiver errado, volte e ajuste. Nada é perdido ao navegar entre os passos.
+          </p>
+
+          <ul class="revisao">
+            <li><span class="revisao__rotulo">Destino</span><span class="revisao__valor" id="revDestino">—</span></li>
+            <li><span class="revisao__rotulo">Período</span><span class="revisao__valor" id="revPeriodo">—</span></li>
+            <li><span class="revisao__rotulo">Duração</span><span class="revisao__valor" id="revDuracao">—</span></li>
+            <li><span class="revisao__rotulo">Interesses</span><span class="revisao__valor" id="revInteresses">—</span></li>
+            <li><span class="revisao__rotulo">Ritmo</span><span class="revisao__valor" id="revRitmo">—</span></li>
+          </ul>
+
+          <div class="passo__navegacao">
+            <button type="button" class="botao botao--fantasma" data-ir="2">Voltar</button>
+            <button type="submit" class="botao botao--primario" id="btnGerar">Gerar roteiro</button>
+          </div>
+        </section>
+
+      </form>
+
+      <!-- ---------- Geração do roteiro (RQ004) ----------
+           As etapas avançam enquanto a API trabalha; o painel só muda para
+           "pronto" quando a resposta chega. -->
+      <section class="geracao" id="painelGerando" aria-live="polite">
+        <div class="geracao__cartao">
+          <h2 class="passo__titulo">Montando seu roteiro</h2>
+          <p class="passo__ajuda" style="margin-bottom:0">
+            Isso leva alguns segundos. Você pode acompanhar as etapas abaixo.
+          </p>
+          <ul class="geracao__etapas" id="etapas">
+            <li data-feito="false">Buscando locais que combinam com seus interesses</li>
+            <li data-feito="false">Calculando distâncias entre as atrações</li>
+            <li data-feito="false">Verificando horários de funcionamento</li>
+            <li data-feito="false">Distribuindo as atividades pelos dias</li>
+          </ul>
+          <div id="falhaGeracao" hidden style="margin-top:22px"></div>
+          <div class="geracao__acoes" id="acoesFalha" hidden>
+            <button type="button" class="botao botao--primario" id="btnTentarDeNovo">Tentar de novo</button>
+            <a class="botao botao--fantasma" id="linkRoteiroVazio" href="viagens.html">Abrir a viagem sem roteiro</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="geracao" id="painelPronto" aria-live="polite">
+        <div class="geracao__cartao">
+          <h2 class="passo__titulo">Roteiro pronto</h2>
+          <p class="passo__ajuda" id="resumoPronto" style="margin-bottom:0"></p>
+          <div class="demonstrativo" id="avisoReserva" role="note" hidden style="margin:18px 0 0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M11 12h1v4h1"></path>
+            </svg>
+            <span><strong>Sugestões pré-definidas</strong><span id="avisoReservaTexto"></span></span>
+          </div>
+          <div class="geracao__acoes">
+            <a class="botao botao--primario" href="roteiro.html" id="linkRoteiro">Ver roteiro</a>
+            <button type="button" class="botao botao--fantasma" id="btnRefazer">Gerar novamente</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+</div>
+
+<script src="js/comum.js"></script>
+<script src="js/api.js"></script>
+<script src="js/nova-viagem.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Histórico de viagens — TripScripter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<div class="painel">
+
+  <!-- ============ Barra lateral ============ -->
+  <nav class="barra" aria-label="Menu principal">
+    <span class="barra__marca">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"></path>
+        <path d="M8 2v16M16 6v16"></path>
+      </svg>
+      TripScripter
+    </span>
+
+    <div class="barra__perfil">
+      <span class="barra__avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </span>
+      <span>
+        <span class="barra__nome"></span><br>
+        <span class="barra__papel"></span>
+      </span>
+    </div>
+
+    <ul class="barra__menu">
+      <li>
+        <a class="barra__item" href="viagens.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span class="barra__longo">Minhas viagens</span><span class="barra__curto">Viagens</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="nova-viagem.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14M5 12h14"></path>
+          </svg>
+          <span class="barra__longo">Nova viagem</span><span class="barra__curto">Nova</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="historico.html" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 3v5h5"></path>
+            <path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path>
+            <path d="M12 7v5l3 2"></path>
+          </svg>
+          <span class="barra__longo">Histórico</span><span class="barra__curto">Histórico</span>
+        </a>
+      </li>
+      <li>
+        <a class="barra__item" href="perfil.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="barra__longo">Perfil de viajante</span><span class="barra__curto">Perfil</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="barra__fim">
+      <button type="button" class="barra__sair" data-sair>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"></path>
+        </svg>
+        <span class="barra__longo">Sair da conta</span><span class="barra__curto">Sair</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ Conteúdo ============ -->
+  <main class="conteudo">
+
+    <header class="cabecalho">
+      <div>
+        <h1>Histórico de viagens</h1>
+        <p>Todas as viagens que você já concluiu.</p>
+      </div>
+    </header>
+
+    <!-- Resumo em números -->
+    <section class="resumo" aria-label="Resumo das viagens concluídas">
+      <div class="resumo__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <div>
+          <p class="resumo__numero" id="totalViagens">0</p>
+          <p class="resumo__rotulo">Viagens concluídas</p>
+        </div>
+      </div>
+
+      <div class="resumo__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"></path>
+        </svg>
+        <div>
+          <p class="resumo__numero" id="totalPaises">0</p>
+          <p class="resumo__rotulo">Países visitados</p>
+        </div>
+      </div>
+
+      <div class="resumo__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 7v5l3 2"></path>
+        </svg>
+        <div>
+          <p class="resumo__numero" id="totalDias">0</p>
+          <p class="resumo__rotulo">Dias de viagem</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Busca -->
+    <div class="busca">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+           stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="M21 21l-4.3-4.3"></path>
+      </svg>
+      <input class="busca__campo" type="search" id="busca"
+             placeholder="Buscar por destino ou interesse…"
+             aria-label="Buscar viagens por destino ou interesse">
+    </div>
+
+    <!-- Viagens agrupadas por ano -->
+    <div id="listaAnos" aria-live="polite">
+      <p class="carregando">Carregando o histórico…</p>
+    </div>
+
+    <!-- Reaproveitar um roteiro em novas datas (RQ011) -->
+    <dialog class="dialogo" id="dialogoModelo" aria-labelledby="tituloModelo">
+      <form method="dialog" id="formModelo">
+        <h2 id="tituloModelo">Usar como modelo</h2>
+        <p id="textoModelo">Uma nova viagem será criada com o mesmo roteiro, a partir da data escolhida.</p>
+        <div class="campo">
+          <label class="campo__rotulo" for="novaIda">Nova data de chegada</label>
+          <input class="campo__caixa" type="date" id="novaIda" required>
+        </div>
+        <p class="aviso" id="erroModelo" role="alert"></p>
+        <div class="dialogo__acoes">
+          <button type="button" class="botao botao--fantasma" id="cancelarModelo">Cancelar</button>
+          <button type="submit" class="botao botao--primario" id="confirmarModelo">Criar viagem</button>
+        </div>
+      </form>
+    </dialog>
+
+  </main>
+</div>
+
+<script src="js/comum.js"></script>
+<script src="js/api.js"></script>
+<script src="js/historico.js"></script>
+</body>
+</html>
