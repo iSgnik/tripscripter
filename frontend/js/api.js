@@ -34,7 +34,7 @@ var API = (function () {
     try { localStorage.removeItem(chave); sessionStorage.removeItem(chave); } catch (e) { /* idem */ }
   }
 
-  var BASE = ler(localStorage, "tripscripter.api") || "https://seu-app.onrender.com/api";
+  var BASE = ler(localStorage, "tripscripter.api") || "https://tripscripter-api.onrender.com/api";
 
   /* ----------------------------------------------------------------------
      Sessão
