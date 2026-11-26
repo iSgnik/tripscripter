@@ -68,9 +68,13 @@ def enviar_json(url, cabecalhos, corpo, tempo_limite):
     try:
         with urllib.request.urlopen(requisicao, timeout=tempo_limite) as resposta:
             return json.loads(resposta.read().decode("utf-8"))
-    except urllib.error.HTTPError as erro:
+       except urllib.error.HTTPError as erro:
         # 401: chave inválida · 429: cota esgotada · 5xx: falha do provedor
-        raise ErroNoServicoDeIA(f"o provedor respondeu com o código HTTP {erro.code}") from erro
+        try:
+            detalhe = erro.read().decode("utf-8", "replace")[:300]
+        except Exception:
+            detalhe = ""
+        raise ErroNoServicoDeIA(f"o provedor respondeu com o código HTTP {erro.code}: {detalhe}") from erro
     except (urllib.error.URLError, socket.timeout, TimeoutError) as erro:
         raise ErroNoServicoDeIA("sem resposta do provedor (rede indisponível ou tempo esgotado)") from erro
     except json.JSONDecodeError as erro:
