@@ -33,6 +33,8 @@ class ClienteGroq(ClienteIA):
                 {"role": "user", "content": montar_pedido_ao_usuario(pedido)},
             ],
             "temperature": 0.6,
+            "max_completion_tokens": 6000,
+            "reasoning_effort": "low",
             "response_format": {
                 "type": "json_schema",
                 "json_schema": {"name": "roteiro", "strict": False, "schema": ESQUEMA_DO_ROTEIRO},
