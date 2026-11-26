@@ -54,7 +54,7 @@ def enviar_json(url, cabecalhos, corpo, tempo_limite):
     Qualquer falha de rede, de tempo ou de formato vira ErroNoServicoDeIA, com
     uma mensagem que pode ser registrada sem expor a chave de API.
     """
-        requisicao = urllib.request.Request(
+    requisicao = urllib.request.Request(
         url,
         data=json.dumps(corpo).encode("utf-8"),
         headers={
