@@ -41,11 +41,10 @@
      abertas diretamente do disco (protocolo file://), por não conseguirem
      identificar a aplicação; a CARTO atende essas requisições. A atribuição
      às duas fontes é exigida pelas respectivas licenças. */
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; colaboradores do <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: "abcd",
-    maxZoom: 19
-  }).addTo(mapa);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: '&copy; colaboradores do <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom: 19
+}).addTo(mapa);
 
   mapa.setView([20, 0], 2);
 
