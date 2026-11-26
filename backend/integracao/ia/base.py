@@ -68,7 +68,7 @@ def enviar_json(url, cabecalhos, corpo, tempo_limite):
     try:
         with urllib.request.urlopen(requisicao, timeout=tempo_limite) as resposta:
             return json.loads(resposta.read().decode("utf-8"))
-       except urllib.error.HTTPError as erro:
+    except urllib.error.HTTPError as erro:
         # 401: chave inválida · 429: cota esgotada · 5xx: falha do provedor
         try:
             detalhe = erro.read().decode("utf-8", "replace")[:300]
